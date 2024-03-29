@@ -6,10 +6,11 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import SInput from '@/components/Input';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
+  username: z.string().min(3, {
+    message: 'Username must be at least 3 characters.',
   }),
   email: z.string().email({
     message: 'Invalid email format.',
@@ -24,12 +25,17 @@ const Auth = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [varient, setVarient] = useState('login');
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<any | null >({});
 
+  const router = useRouter();
 
   const validateForm = useCallback(() => {
     try {
-      formSchema.parse({ email, username: name, password });
+      if (varient === 'login') {
+        formSchema.pick({ email, password }).parse({ email, password });
+      } else if (varient === 'register') {
+        formSchema.parse({ email, username: name, password });
+      }
       setErrors({});
       return true;
     } catch (error) {
@@ -42,11 +48,13 @@ const Auth = () => {
       }
       return false;
     }
-  }, [email, name, password]);
+  }, [email, name, password, varient]);
+  
 
   const toggleVarient = useCallback(() => {
     setVarient((currVarient) => (currVarient === 'login' ? 'register' : 'login'));
   }, []);
+
 
   const login = useCallback(async () => {
     if (validateForm()) {
@@ -54,15 +62,15 @@ const Auth = () => {
         await signIn('credentials', {
           email,
           password,
-          redirect: false,
-          callbackUrl: '/profiles',
         });
+        window.location.href ="/profiles"
+  
       } catch (err) {
         console.log(err);
       }
     }
-  }, [email, password, validateForm]);
-
+  }, [email, password, validateForm, router]); 
+  
   const register = useCallback(async () => {
     if (validateForm()) {
       try {

@@ -6,7 +6,6 @@ import PlayButton from './PlayButton';
 
 const BillBoard = () => {
   const {data} = useBillBoard();
-  console.log(data)
 
   return (
     <div className="relative h-[56.25vw]">

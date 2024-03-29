@@ -23,7 +23,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   }, [currentUser, movieId]);
 
   const toggleFavorites = useCallback(async () => {
-    console.log('toggleFavorites called');
+   
     let response;
 
     if (isFavorite) {
