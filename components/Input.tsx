@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input } from './ui/input';
 
 interface InputProps {
   id: string;
@@ -6,12 +7,13 @@ interface InputProps {
   value: string;
   label: string;
   type?: string;
+  error?:string;
 }
 
-const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
+const SInput: React.FC<InputProps> = ({ id, onChange, value, label, type , error}) => {
   return (
     <div className="relative">
-      <input
+      <Input
         onChange={onChange}
         value={value}
         type={type}
@@ -39,7 +41,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         className="
         absolute 
         text-md
-      text-zinc-400
+      text-white
         duration-150 
         transform 
         -translate-y-3 
@@ -53,8 +55,9 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         peer-focus:scale-75
         peer-focus:-translate-y-3
       ">{label}</label>
+     {error && <span className="text-red-500 text-sm">{error}</span>}
     </div>
   )
 }
 
-export default Input;
+export default SInput;
