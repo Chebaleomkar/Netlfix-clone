@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { isEmpty } from 'lodash'
 import MovieCard from './MovieCard';
 
 interface movieListProps{
@@ -10,7 +9,7 @@ interface movieListProps{
 
 const MovieList: React.FC<movieListProps> = ({data , title}) => {
   
-  if(isEmpty(data)){
+  if(!data){
     return null;
   }
 
