@@ -6,8 +6,9 @@ This project is a Netflix clone built using React, MongoDB, Prisma, Next.js with
 
 ## Tech Stack
 
-React, MongoDB, Prisma, Next.js, Next-Auth, Shadcn's React Hook Form, Tailwind CSS, Zod, Zustand, TypeScript, Axios
+React, MongoDB, Prisma, Next.js, Next-Auth, Shadcn, React Hook Form, Tailwind CSS, Zod, Zustand, TypeScript, Axios
 
+![netflix-clone](https://github.com/Chebaleomkar/Netlfix-clone/assets/122032936/bd127032-f13a-4f87-958c-e17da1d9c8c2)
 
 ## Features
 
