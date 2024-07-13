@@ -8,7 +8,7 @@ interface MovieCardProps {
   data: Record<string, any>;
 }
 
-const MovieCard = ({ data }) => {
+const MovieCard = ({ data  }:MovieCardProps) => {
   const router = useRouter();
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw] ">
