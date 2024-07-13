@@ -2,6 +2,8 @@
 
 movies.json
 
+.env
+
 # dependencies
 /node_modules
 /.pnp
